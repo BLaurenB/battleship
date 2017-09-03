@@ -2,7 +2,7 @@ class UI
 
   attr_accessor :puts_variable
 
-#initiate timer -- when?
+#initiate timer -- when the player presses 'p' for 'p'play.
 
   def initialize
     #all the things

@@ -17,23 +17,18 @@ class BoardTest < Minitest::Test
 
 
   def test_it_exists
-    board = Board.new("Bobby")
+    board = Board.new
     assert_instance_of Board, board
   end
 
   def test_it_has_a_name
     board = Board.new
-    assert_equal "Eugene the Ungle Unicorn", board.name
+    assert_equal "Eugene the Ugly Unicorn", board.name
   end
 
-  def test_it_has_a_name
+  def test_it_has_a_diferent_name
     board = Board.new("Bobby")
     assert_equal "Bobby", board.name
-  end
-
-  def test_a1_defaults_to_space
-    board = Board.new
-    assert_equal " ", board.a1
   end
 
   def test_coordinates_default_to_space
@@ -46,19 +41,29 @@ class BoardTest < Minitest::Test
     assert_equal " ", output
   end
 
-  # def test_a1_can_take_user_input
+  def test_a1_defaults_to_space
+    board = Board.new
+    assert_equal " ", board.a1
+  end
+
+  def test_it_can_update_enemy_map
+    board = Board.new
+
+
+    assert_equal " H", board.a1
+  end
+
+
+
+
+  # def test_enemy_target_map_interpolates
   #   board = Board.new(name, "H")
-  #   assert_equal "H", board.____
-  # end
-
-  def test_enemt_target_map_interpolates
-    board = Board.new(name, "H")
-    input = board.interpolation
-    output = "H"
-    assert_equal output, input
+  #   input = board.interpolation
+  #   output = "H"
+  #   assert_equal output, input
 
 
-  # def test_enemt_target_map_interpolates
+  # def test_enemy_target_map_interpolates
   #   board = Board.new(name, "H")
   #   input = board.enemy_target_map
   #   output =
@@ -72,16 +77,9 @@ class BoardTest < Minitest::Test
   #   ==========="
   #
   #   assert_equal output, input
-  end
-
-  # def test_it
-  #   board = Board.new
-  #
-  #   input =
-  #   output =
-  #
-  #   assert... output, input
   # end
+
+
   # def test_it
   #   board = Board.new
   #

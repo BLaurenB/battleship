@@ -6,6 +6,7 @@ require "./lib/board.rb"
 class BoardTest < Minitest::Test
 
   test
+  end 
 
 
 end

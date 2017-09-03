@@ -20,24 +20,28 @@ class UI
     #may need to be split out into different methods for different parts.
   end
 
-  def welcome
+  def welcome #if this doesn't work, paste it back into the END section
+    # print "\e[H\e[2J"
+    # puts "\n\n\n\nWelcome to BATTLESHIP\n\n\n\nPress ENTER to begin" #for some sort of time period?
+    # user_input = gets
+    # print "\e[H\e[2J"
   end
 
 
-  def ui_initialize
-    @puts_variable =  "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-    user_input = gets.chomp
-
-    if user_input.downcase == "p"
-      #stuff
-    elsif user_input.downcase == "i"
-      puts instructions
-    elsif user_input ==
-      #stuff
-    else
-      @puts_variable = "Please try again.\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
-    end
-  end
+  # def ui_initialize
+  #   @puts_variable =  "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+  #   user_input = gets.chomp
+  #
+  #   if user_input.downcase == "p"
+  #     #stuff
+  #   elsif user_input.downcase == "i"
+  #     puts instructions
+  #   elsif user_input ==
+  #     #stuff
+  #   else
+  #     @puts_variable = "Please try again.\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
+  #   end
+  # end
 
 
 
@@ -49,7 +53,7 @@ if __FILE__ == $PROGRAM_NAME
   #initialize classes here
   ui = UI.new
   print "\e[H\e[2J"
-  puts "\n\n\n\nWelcome to BATTLESHIP\n\n\n\nPress Enter to begin" #for some sort of time period?
+  puts "\n\n\n\nWelcome to BATTLESHIP\n\n\n\nPress ENTER to begin" #for some sort of time period?
   user_input = gets
   print "\e[H\e[2J"
 

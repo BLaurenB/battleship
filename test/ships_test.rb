@@ -5,6 +5,8 @@ require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
 require "./lib/shot_sequence.rb"
+require "./data/instructions.rb"
+
 
 class _____Test < Minitest::Test
 

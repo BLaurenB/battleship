@@ -5,6 +5,8 @@ require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
 require "./lib/shot_sequence.rb"
+require "./data/instructions.rb"
+
 
 class GameSetUpTest < Minitest::Test
 
@@ -55,3 +57,31 @@ class GameSetUpTest < Minitest::Test
 
 
 end
+
+
+=begin
+Things to test for
+
+player has a name
+player has a board
+player has ships
+
+player can input valid ships
+
+player is warned when using invalid ships
+
+computer has a board
+computer can place valid ships
+
+
+
+
+
+
+
+
+
+
+
+
+=end

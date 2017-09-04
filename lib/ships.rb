@@ -1,3 +1,4 @@
+require "./data/instructions.rb"
 
 =begin
 2 ships, 2x1 and 3x1

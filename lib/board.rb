@@ -1,3 +1,6 @@
+require "./data/instructions.rb"
+
+
 class  Board
 
   # attr_accessor

@@ -1,3 +1,6 @@
+require "./data/instructions.rb"
+
+
 class UI
 
   attr_accessor :puts_variable

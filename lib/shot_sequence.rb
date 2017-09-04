@@ -1,3 +1,6 @@
+require "./data/instructions.rb"
+
+
 class ShotSequence
 
 end

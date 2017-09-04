@@ -2,6 +2,8 @@ require
 require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
+require "./data/instructions.rb"
+
 
 
 class GameSetUp
@@ -9,7 +11,7 @@ class GameSetUp
   def initialize
   end
 
-  
+
 
 
 end

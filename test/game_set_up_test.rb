@@ -1,6 +1,7 @@
 gem 'minitest', '~> 5.2'
 require "minitest/autorun"
 require "minitest/pride"
+require "./lib/game_set_up.rb"
 require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
@@ -10,15 +11,17 @@ require "./data/instructions.rb"
 
 class GameSetUpTest < Minitest::Test
 
-  def test___
+  def test_it_exists
     game_set_up = GameSetUp.new
     assert_instance_of GameSetUp, game_set_up
   end
 
-  # def test___
+  # def test_computer can choose_valid_ships
   #   game_set_up = GameSetUp.new
-  #   input =
-  #   output =
+  #   ship_1 = Ships.new
+
+  #   input = ships.computer_ship_choice
+  #   output = 
   #
   #   assert___ output, input
   # end

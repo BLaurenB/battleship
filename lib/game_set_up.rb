@@ -1,4 +1,3 @@
-require
 require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"

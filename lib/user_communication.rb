@@ -43,7 +43,8 @@ class UI
   #   end
   # end
 
-
+  def end_game
+  end
 
 
 end
@@ -58,6 +59,5 @@ if __FILE__ == $PROGRAM_NAME
   print "\e[H\e[2J"
 
   puts "#{@puts_variable}"
-
 
 end

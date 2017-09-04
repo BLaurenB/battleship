@@ -1,4 +1,9 @@
-=begin
+Things to ask Andrew and instructors:
+when should the timer start?
+
+
+
+
 initial thoughts on classes.
 
 board (and ships? or ships separate?)
@@ -14,7 +19,7 @@ to clear the terminal after a shot phase, use
  print "\e[H\e[2J"
  this works just by calling it!
 
-=end
+
 
 
 

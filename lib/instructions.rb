@@ -35,10 +35,7 @@ module Instructions
     end
 
   def self.ship_2_input_too_small
-    "You did not enter enough characters. Enter your choice as a two digit coordinate, a space, and then your final two digit coordinate, then hit enter. Example:
-    D2 D3 D4
-    or
-    B3 C3 D3"
+    
   end
 
   def self.ship_2_input_too_large

@@ -3,7 +3,7 @@ Be the first to sink your opponent's ships!
 
 Choose your ship locations. You have one ship that takes 2 board-spaces, and another that takes 3 spaces.
 
-Ships can be placed vertically or horizontally on the board in a straight line, but they cannot overlap or be placed diagonnaly.
+Ships can be placed vertically or horizontally on the board in a straight line, but they cannot overlap or be placed diagonally.
 
 When prompted, enter the coordinates of your ships like this:
 A1 A2 A3

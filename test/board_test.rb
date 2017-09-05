@@ -2,7 +2,7 @@ gem 'minitest', '~> 5.2'
 require "minitest/autorun"
 require "./lib/board.rb"
 require "./lib/ship.rb"
-require "./data/instructions.rb"
+require "./lib/instructions.rb"
 
 class BoardTest < Minitest::Test
 

@@ -6,7 +6,7 @@ require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
 require "./lib/shot_sequence.rb"
-require "./data/instructions.rb"
+require "./lib/instructions.rb"
 
 
 class GameSetUpTest < Minitest::Test
@@ -21,7 +21,7 @@ class GameSetUpTest < Minitest::Test
   #   ship_1 = Ships.new
 
   #   input = ships.computer_ship_choice
-  #   output = 
+  #   output =
   #
   #   assert___ output, input
   # end

@@ -1,7 +1,7 @@
 require "./lib/board.rb"
 require "./lib/ships.rb"
 require "./lib/user_communication.rb"
-require "./data/instructions.rb"
+require "./lib/instructions.rb"
 
 
 

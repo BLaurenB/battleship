@@ -1,4 +1,4 @@
-require "./data/instructions.rb"
+require "./lib/instructions.rb"
 
 
 class  Board

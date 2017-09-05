@@ -14,31 +14,31 @@ class ShipTest < Minitest::Test
     ship = Ship.new
     assert_instance_of Ship, ship
   end
-
-  def test_user_input_to_ship_1
-    ship = Ship.new
-    input = ship.ship_1("A1 A2")
-    output =["A1", "A2"]
-    assert_equal output, input
-  end
-
-  def test_user_input_to_ship_2
-    ship = Ship.new
-    input = ship.ship_2("A1 A2 A3")
-    output =["A1", "A2", "A3"]
-    assert_equal output, input
-  end
-
-  def test_it_finds_s1_input_too_small
-    ship = Ship.new
-    ship.ship_1("A1 A")
-    input = ship.ship_1_input_too_small_or_large
-    output = "You did not enter enough characters. Enter your choice as a two digit coordinate, a space, and then your final two digit coordinate, then hit enter. Example:
-    D2 D3
-    or
-    B3 C3"
-    assert_equal output, input
-  end
+  # 
+  # def test_user_input_to_ship_1
+  #   ship = Ship.new
+  #   input = ship.ship_1("A1 A2")
+  #   output =["A1", "A2"]
+  #   assert_equal output, input
+  # end
+  #
+  # def test_user_input_to_ship_2
+  #   ship = Ship.new
+  #   input = ship.ship_2("A1 A2 A3")
+  #   output =["A1", "A2", "A3"]
+  #   assert_equal output, input
+  # end
+  #
+  # def test_it_finds_s1_input_too_small
+  #   ship = Ship.new
+  #   ship.ship_1("A1 A")
+  #   input = ship.ship_1_input_too_small_or_large
+  #   output = "You did not enter enough characters. Enter your choice as a two digit coordinate, a space, and then your final two digit coordinate, then hit enter. Example:
+  #   D2 D3
+  #   or
+  #   B3 C3"
+  #   assert_equal output, input
+  # end
 
   def test_it_finds_s1_input_too_large
     ship = Ship.new
@@ -50,11 +50,11 @@ class ShipTest < Minitest::Test
     B3 C3"
     assert_equal output, input
   end
-
+  #
   # def test_it_finds_s2_input_too_small
   #   ship = Ship.new
   #   ship.ship_2("A1 A2 A3")
-  #   input = ship.ship_2_input_too_small
+  #   input = ship.ship_2_input_too_small_or_large
   #   output ="You did not enter enough characters. Enter your choice as a two digit coordinate, a space, and then your final two digit coordinate, then hit enter. Example:
   #   D2 D3 D4
   #   or
@@ -64,8 +64,8 @@ class ShipTest < Minitest::Test
   #
   # def test_it_finds_s2_input_too_large
   #   ship = Ship.new
-  #   ship.ship_2("A1 A2 A3")
-  #   input = ship.ship_2_input_too_large
+  #   ship.ship_2("A1 A2 A3 A4")
+  #   input = ship.ship_2_input_too_small_or_large
   #   output = "You entered too many characters. Enter your choice as a two digit coordinate, a space, and then your final two digit coordinate, then hit enter. Example:
   #   D2 D3 D4
   #   or
@@ -73,33 +73,42 @@ class ShipTest < Minitest::Test
   #   assert_equal output, input
   # end
   #
-  #
-  #
-  # def test_that_the_order_of_input_doesnt_matter
-  #   ship = Ship.new
-  #
-  #   input =
-  #   output =
-  #
-  #   assert___ output, input
-  # end
-  #
-
   # def test_ships_cannot_overlap
   #   ship = Ship.new
-  #   input =
-  #   output =
+  #   ship.ship_1("A1 A2")
+  #   ship.ship_2("A1 B1 C1")
+  #   input = ship.ships_cannot_overlap
+  #   output = "Your ships cannot overlap. Please re-enter all values for your 3x1 ship."
   #
-  #   assert___ output, input
+  #   assert_equal output, input
   # end
-
-  # def test____
+  #
+  #
+  # def test_chooses_valid_coordinates
   #   ship = Ship.new
-  #   input =
-  #   output =
+  #   ship.ship_1("A1 F5")
+  #   input = ship.ship_has_valid_coordinates
+  #   output = "You entered a coordinate that is outside the bounds of this board.\nEnter your coordinates again."
   #
-  #   assert___ output, input
+  #   assert_equal output, input
   # end
+  #
+  # def test_chooses_valid_coordinates_again
+  #   ship = Ship.new
+  #   ship.ship_2("A1 GO CU")
+  #   input = ship.ship_has_valid_coordinates
+  #   output = "You entered a coordinate that is outside the bounds of this board.\nEnter your coordinates again."
+  #
+  #   assert_equal output, input
+  # end
+  #
+  # # def test____
+  # #   ship = Ship.new
+  # #   input =
+  # #   output =
+  # #
+  # #   assert___ output, input
+  # # end
 end
 
 
@@ -107,7 +116,7 @@ end
 test it...
 can choose valid ships.
 can detect invalid ship entries
- - no spaces, additional punctuation, invalid coordinates,
+
    -displays correct error messages.
 
 =end

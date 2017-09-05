@@ -1,18 +1,11 @@
 Things to ask Andrew and instructors:
-when should the timer start?
+--when should the timer start?
+--is the boat with 3 spots supposed to get input of 3 coords, or just 2?
 
 
 
 
-initial thoughts on classes.
 
-board (and ships? or ships separate?)
-  totally different classes for computer/player, or just instances of the same class?
-ships?
-game initiazlization
-player turns - separate from computer's turns?
-end sequence
-general terminal interaction (also holds the timer)
 
 
 to clear the terminal after a shot phase, use
@@ -22,24 +15,9 @@ to clear the terminal after a shot phase, use
 
 
 
-
-
 "
 try interpolating a puts's row using this. I might need to append the "a2" string with a "@" at the beginning...
 *check your string methods or else you'll have to .to_a.shift(@)
-https://ruby-doc.org/core-2.4.1/Object.html
-!!!"If the instance variable name is passed as a string, that string is converted to a symbol."!!!
-
-class Fred
-  def initialize(p1, p2)
-    @a, @b = p1, p2
-  end
-end
-
-fred = Fred.new('cat', 99)
-fred.instance_variable_set(:@a, 'dog')   #=> "dog"
-fred.instance_variable_set(:@c, 'cat')   #=> "cat"
-fred.inspect                             #=> "#<Fred:0x401b3da8 @a=\"dog\", @b=99, @c=\"cat\">"
 
 
 

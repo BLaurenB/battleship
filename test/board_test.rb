@@ -65,21 +65,21 @@ class BoardTest < Minitest::Test
   #   assert_equal output, input
 
 
-  # def test_enemy_target_map_interpolates
-  #   board = Board.new(name, "H")
-  #   input = board.enemy_target_map
-  #   output =
-  #   "FIRE AT ENEMY SHIPS!
-  #   ===========
-  #   . 1 2 3 4
-  #   A H
-  #   B
-  #   C
-  #   D
-  #   ==========="
-  #
-  #   assert_equal output, input
-  # end
+  def test_enemy_target_map_interpolates
+    board = Board.new(name, "H")
+    input = board.enemy_target_map
+    output =
+    "FIRE AT ENEMY SHIPS!
+    ===========
+    . 1 2 3 4
+    A H
+    B
+    C
+    D
+    ==========="
+
+    assert_equal output, input
+  end
 
 
   # def test_it

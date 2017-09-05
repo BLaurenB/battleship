@@ -17,11 +17,7 @@ module Instructions
   end
 
   def self.ship_out_of_bounds
-    "You entered a coordinate that is outside the bounds of this board.\nEnter your coordinate again."
-  end
-
-  def self.ship_overlaps
-    "You have selected a coordinate that overlaps your other ship. Please re-enter all values for your 3x1 ship."
+    "You entered a coordinate that is outside the bounds of this board.\nEnter your coordinates again."
   end
 
   def self.ship_1_input_too_small
@@ -50,12 +46,10 @@ module Instructions
     D2 D3 D4
     or
     B3 C3 D3"
-    end
+  end
 
-  def self.ship_coordinates_invalid
-    "The coordinates you entered are not close enough together. Your ships are 2x1 and 3x1. They can be placed vertically and horizontally.
-    -- If a ship is 2 squares wide, you must choose two coordinates which are next to each other, either vertically or horizontally.
-    -- If your ship is 3 squares wide, you must choose 3 coordinates that occur in a line either vertically or horizontally. 3-square ships cannot bend corners!"
+  def self.ships_overlap
+    "Your ships cannot overlap. Please re-enter all values for your 3x1 ship."
   end
 
   def self.shot_already_input
@@ -65,5 +59,7 @@ module Instructions
   def self.shot_out_of_bounds
     "You entered a coordinate that is outside the bounds of this board. Enter your coordinate again."
   end
+
+
 
 end

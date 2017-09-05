@@ -36,54 +36,68 @@ class Ship
   end
 
   def ship_1_input_too_small_or_large
+      # require "pry"; binding.pry
     if @ship_1.length < 4
       return Instructions.ship_1_input_too_small
-    else @ship_1.length > 4
+    elsif @ship_1.length > 4
       return Instructions.ship_1_input_too_large
+    else @ship_1.length == 4
+      return @ship_1
     end
   end
 
   def ship_1(user_input)
-    # require "pry"; binding.pry
     @ship_1 = user_input.upcase.delete(" ")
       ship_1_input_too_small_or_large
     @ship_1 = user_input.upcase.delete(" ").scan(/../).to_a
+      ship_1_has_valid_coordinates
+  end
+
+  def ship_2_input_too_small_or_large
+    if @ship_2.length < 6
+      return Instructions.ship_2_input_too_small
+    elsif @ship_2.length > 6
+      return Instructions.ship_2_input_too_large
+    else
+      return @ship_2
+    end
   end
 
   def ship_2(user_input)
+    @ship_2 = user_input.upcase.delete(" ")
+      ship_2_input_too_small_or_large
     @ship_2 = user_input.upcase.delete(" ").scan(/../).to_a
-  end
-  def ship_2_input_too_small
-    @ship_2.length < 4
-    return Instructions.ship_2_input_too_small
+      ship_2_has_valid_coordinates
   end
 
-  def ship_2_input_too_large
-    @ship_2.length > 4
-    return Instructions.ship_2_input_too_large
+  def ships_cannot_overlap
+    ships = @ship_1 << @ship_2
+    ships.flatten
+    if ships != ships.uniq!
+      Instructions.ships_overlap
+      # @ship_2 = gets.chomp
+    end
   end
 
-  def order_of_input(user_input)
-    user_input == user_input.reverse
+  def ship_1_has_valid_coordinates
+    if valid_ship_coordinates.include?(@ship_1)
+      return @ship_1
+    else
+      Instructions.ship_out_of_bounds
+      # gets
+    end
   end
 
-  def strip_ship_inputs(user_input)
-    user_input_length = user_input.strip.delete(" ")
+  def ship_2_has_valid_coordinates
+    two_digit_ship = []
+    two_digit_ship =  @ship_2[0] + @ship_2[2]
+    if valid_ship_coordinates.include?(two_digit_ship.scan(/../).to_a)
+      return @ship_2
+    else
+      Instructions.ship_out_of_bounds
+      # gets
+    end
   end
-
-  # def validate_user_ship_1_coords
-      # if user_input_length > 4
-    #   return warning and prompt for re-entry
-    # elsif user_input_length < 4
-    #   return warning and prompt for re-entry
-    # elsif
-    # ship_1[0] && ship_1[1] are in valid_ship_coordinates, return true. (use include?)
-    #   if not true, return warning that the coordinates are not valid.
-    # else
-    # end
-  # end
-
-
 
 
 

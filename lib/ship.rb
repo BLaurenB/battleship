@@ -12,6 +12,22 @@ class Ship
     @board = Board.new
   end
 
+  def valid_ship_coordinates
+    valid_ship_coordinates = [["A1", "A2"], ["A2", "A3"],
+    ["A3", "A4"], ["B1", "B2"], ["B2", "B3"], ["B3", "B4"],
+    ["C1", "C2"], ["C2", "C3"], ["C3", "C4"], ["D1", "D2"],
+    ["D2", "D3"], ["D3", "D4"], ["A1", "B1"], ["A2", "B2"],
+    ["A3", "B3"], ["A4", "B4"], ["B1", "C1"], ["B2", "C2"],
+    ["B3", "C3"], ["B4", "C4"], ["C1", "D1"], ["C2", "D2"],
+    ["C3", "D3"], ["C4", "D4"], ["A1", "A2", "A3"],
+    ["A2", "A3", "A4"], ["B1", "B1", "B3"],
+    ["B2", "B3", "B4"], ["C1", "C1", "C3"],
+    ["C2", "C3", "C4"], ["D1", "D2", "D3"],
+    ["D2", "D2", "D4"], ["A2", "B2", "C2"],
+    ["B2", "C2", "D2"], ["A4", "B4", "C4"],
+    ["B4", "C4", "D4"]
+    ]
+  end
 
   def ship_1_input_too_small_or_large
     if @potential_ship_1.length < 4
@@ -28,7 +44,7 @@ class Ship
   end
 
   def ship_1_has_valid_coordinates
-    if board.valid_ship_coordinates.include?(ship_1_to_array)
+    if valid_ship_coordinates.include?(ship_1_to_array)
       return ship_1_to_array
     else
       Instructions.ship_out_of_bounds
@@ -63,7 +79,7 @@ class Ship
   end
 
   def ship_2_has_valid_coordinates
-    if board.valid_ship_coordinates.include?(ship_2_to_array)
+    if valid_ship_coordinates.include?(ship_2_to_array)
       return ship_2_to_array #the 3 item array
     else
       return Instructions.ship_out_of_bounds
@@ -93,31 +109,72 @@ class Ship
   end
 
 
-  def computer_ship_1_choice
-    computer_ship_1_choice = board.valid_ship_coordinates.sample
-    until computer_ship_1_choice.length == 2
-      computer_ship_1_choice = board.valid_ship_coordinates.sample
+  def ai_ship_1_choice
+    ai_ship_1_choice = valid_ship_coordinates.sample
+    until ai_ship_1_choice.length == 2
+      ai_ship_1_choice = valid_ship_coordinates.sample
     end
-    return computer_ship_1_choice
+    return ai_ship_1_choice
   end
 
-  def computer_ship_2_choice
+  def ai_ship_2_choice
       # require "pry"; binding.pry
-    computer_ship_2_choice = board.valid_ship_coordinates.sample
-    until computer_ship_2_choice.length == 3
-      computer_ship_2_choice = board.valid_ship_coordinates.sample
+    ai_ship_2_choice = valid_ship_coordinates.sample
+    until ai_ship_2_choice.length == 3
+      ai_ship_2_choice = valid_ship_coordinates.sample
     end
-    return computer_ship_2_choice
+    return ai_ship_2_choice
   end
 
-  def computer_ships_cannot_overlap
+  def ai_ships_cannot_overlap
     ships = []
-    ships.push(computer_ship_1_choice)
-    ships.push(computer_ship_2_choice)
+    ships.push(ai_ship_1_choice)
+    ships.push(ai_ship_2_choice)
     if ships.flatten != ships.flatten.uniq!
-      computer_ship_2_choice
+      ai_ship_2_choice
     end
   end
+
+  def ai_place_ships_on_board
+    s1 = ai_ship_1_choice
+    s2 = ai_ship_2_choice
+    place_ships_on_board(s1, s2)
+  end
+
+  def player_place_ships_on_board
+    s1 = ship_1
+    s2 = ship_2
+    place_ships_on_board(s1, s2)
+  end
+
+
+  def place_ships_on_board #does this belong on board class or UI class?
+    all_ships = (s1 << s2).flatten
+     all_ships.each do |coord|
+       if coord[0] == "A"
+        board.board_rows[0][:row_a][0][coord] = " *"
+      elsif coord[0] == "B"
+        board.board_rows[1][:row_b][0][coord] = " *"
+      elsif coord[0] == "C"
+        board.board_rows[2][:row_c][0][coord] = " *"
+      else coord[0] == "D"
+        board.board_rows[3][:row_d][0][coord] = " *"
+      end
+    end
+  end
+
+
+
+
+=begin
+things to try.
+ - a .each that compares the element to the hash. if a hash match is found, perform a separate update/replacement of values
+
+
+
+
+
+=end
 
 
 

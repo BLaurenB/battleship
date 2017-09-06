@@ -59,15 +59,19 @@ class Ship
   end
 
   def ship_2_to_array
-    potential_ship_2_array = @potential_ship_2.upcase.delete(" ").scan(/../).to_a
+    @potential_ship_2.upcase.delete(" ").scan(/../).to_a
   end
 
   def ship_2_has_valid_coordinates
-    if board.valid_ship_coordinates.include?(ship_2_to_array)
-      return ship_2_to_array
-    else
-      Instructions.ship_out_of_bounds
-      # gets
+    # require "pry"; binding.pry
+    ship_2_two_coords =[]
+    ship_2_two_coords.push(ship_2_to_array[0])
+    ship_2_two_coords.push(ship_2_to_array[2])
+    if ! board.valid_ship_coordinates.include?(ship_2_two_coords) #the 2 item array
+      return Instructions.ship_out_of_bounds
+        # then gets
+    else board.valid_ship_coordinates.include?(ship_2_two_coords)
+      ship_2_to_array #the 3 item array
     end
   end
 
@@ -76,7 +80,6 @@ class Ship
     ship_2_input_too_small_or_large
     ship_2_to_array
     ship_2_has_valid_coordinates
-    return
   end
 
   def ship_2
@@ -85,10 +88,9 @@ class Ship
 
   def ships_cannot_overlap
     ships = []
-    ships << ship_1_to_array
-    ships << ship_2_to_array
-    ships.flatten
-    if ships != ships.uniq!
+    ships.push(ship_1_to_array)
+    ships.push(ship_2_to_array)
+    if ships.flatten != ships.flatten.uniq!
       Instructions.ships_overlap
       # @ship_2 = gets.chomp
     end

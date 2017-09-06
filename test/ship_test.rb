@@ -102,24 +102,9 @@ class ShipTest < Minitest::Test
 
   def test_ship_2_has_valid_coordinates
     ship = Ship.new
-    ship.ship_2_coordinate_validation("A1 A2")
+    ship.ship_2_coordinate_validation("A1 A2 A3")
 
-    assert_equal ["A1", "A2"], ship.ship_2_has_valid_coordinates
-    end
-
-
-  def test_ships_cannot_overlap
-    ship = Ship.new
-    ship.ship_1_coordinate_validation("A1 A2")
-    ship.ship_2_coordinate_validation("A1 B1 C1")
-
-
-    ships = ["A1", "A2", "A1", "B1", "C1"]
-
-    input = ship.ships_cannot_overlap
-    output = "Your ships cannot overlap. Please re-enter all values for your 3x1 ship."
-
-    assert_equal output, input
+    assert_equal ["A1", "A2", "A3"], ship.ship_2_has_valid_coordinates
   end
 
 
@@ -140,6 +125,16 @@ class ShipTest < Minitest::Test
     assert_equal output, input
   end
 
+  def test_ships_cannot_overlap
+    ship = Ship.new
+    ship.ship_1_coordinate_validation("A1 A2")
+    ship.ship_2_coordinate_validation("A1 B1 C1")
+    ships = ["A1", "A2", "A1", "B1", "C1"]
+    input = ship.ships_cannot_overlap
+    output = "Your ships cannot overlap. Please re-enter all values for your 3x1 ship."
+    assert_equal output, input
+  end
+
 
   def test_user_input_passes_all_validation_for_ship_1
     ship = Ship.new
@@ -153,7 +148,7 @@ class ShipTest < Minitest::Test
     ship = Ship.new
     board = Board.new
     input = ship.ship_2_coordinate_validation("A1 A2 A3")
-    output =["A1", "A2", "A3"]
+    output = ["A1", "A2", "A3"]
     assert_equal output, input
   end
 

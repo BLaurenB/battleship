@@ -50,3 +50,19 @@ if not interpolating each,
     board_hash[ui][row_position] = " H"
     # this overwrites the value in row_1[1]
     then to puts the row, you'll need to .map through the board_hash to  get an array of the spaces (or updated characters). or, if I have @a1 assigned to the puts version of row_1 (like terminal_row_x?) can I just navigate there and drop " H" into the printed board?
+
+
+    valid_ship_coordinates = [["A1", "A2"], ["A2", "A3"],
+    ["A3", "A4"], ["B1", "B2"], ["B2", "B3"], ["B3", "B4"],
+    ["C1", "C2"], ["C2", "C3"], ["C3", "C4"], ["D1", "D2"],
+    ["D2", "D3"], ["D3", "D4"], ["A1", "B1"], ["A2", "B2"],
+    ["A3", "B3"], ["A4", "B4"], ["B1", "C1"], ["B2", "C2"],
+    ["B3", "C3"], ["B4", "C4"], ["C1", "D1"], ["C2", "D2"],
+    ["C3", "D3"], ["C4", "D4"], ["A1", "A2", "A3"],
+    ["A2", "A3", "A4"], ["B1", "B1", "B3"],
+    ["B2", "B3", "B4"], ["C1", "C1", "C3"],
+    ["C2", "C3", "C4"], ["D1", "D2", "D3"],
+    ["D2", "D2", "D4"], ["A2", "B2", "C2"],
+    ["B2", "C2", "D2"], ["A4", "B4", "C4"],
+    ["B4", "C4", "D4"]
+    ]

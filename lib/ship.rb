@@ -63,7 +63,7 @@ class Ship
   end
 
   def ship_2_has_valid_coordinates
-    # require "pry"; binding.pry
+
     ship_2_two_coords =[]
     ship_2_two_coords.push(ship_2_to_array[0])
     ship_2_two_coords.push(ship_2_to_array[2])
@@ -71,7 +71,7 @@ class Ship
       return Instructions.ship_out_of_bounds
         # then gets
     else board.valid_ship_coordinates.include?(ship_2_two_coords)
-      ship_2_to_array #the 3 item array
+      return ship_2_to_array #the 3 item array
     end
   end
 
@@ -95,9 +95,34 @@ class Ship
       # @ship_2 = gets.chomp
     end
   end
-  # def computer_ship_choice
-  #   #needs to pick a random number, then randomly pick NSEW or just hard code a list of valid coords...
-  # end
+
+
+  def computer_ship_1_choice
+    computer_ship_1_choice = board.valid_ship_coordinates.sample
+    until computer_ship_1_choice.length == 2
+      computer_ship_1_choice = board.valid_ship_coordinates.sample
+    end
+    return computer_ship_1_choice
+  end
+
+  def computer_ship_2_choice
+      # require "pry"; binding.pry
+    computer_ship_2_choice = board.valid_ship_coordinates.sample
+    until computer_ship_2_choice.length == 3
+      computer_ship_2_choice = board.valid_ship_coordinates.sample
+    end
+    return computer_ship_2_choice
+  end
+
+  def computer_ships_cannot_overlap
+    ships = []
+    ships.push(computer_ship_1_choice)
+    ships.push(computer_ship_2_choice)
+    if ships.flatten != ships.flatten.uniq!
+      computer_ship_2_choice
+    end
+  end
+
 
 
 

@@ -89,7 +89,7 @@ class ShipTest < Minitest::Test
     ship.ship_2_coordinate_validation("A1 A2 A3")
     ship.ship_2_to_array
 
-    assert_equal ["A1", "A2", "A3"], ship.ship_2_coordinate_validation
+    assert_equal ["A1", "A2", "A3"], ship.ship_2_coordinate_validation("A1 A2 A3")
   end
 
 
@@ -163,8 +163,7 @@ class ShipTest < Minitest::Test
     ship.computer_ship_1_choice
     ship.computer_ships_cannot_overlap
 
-    refute ship.computer_ship_2_choice.include?(ship.computer_ship_1_choice[0])
-    refute ship.computer_ship_2_choice.include?(ship.computer_ship_1_choice[1])
+    refute ship.computer_ship_2_choice.include?(ship.computer_ship_1_choice[0]) && ship.computer_ship_2_choice.include?(ship.computer_ship_1_choice[1])
   end
 
 

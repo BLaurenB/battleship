@@ -63,15 +63,11 @@ class Ship
   end
 
   def ship_2_has_valid_coordinates
-
-    ship_2_two_coords =[]
-    ship_2_two_coords.push(ship_2_to_array[0])
-    ship_2_two_coords.push(ship_2_to_array[2])
-    if ! board.valid_ship_coordinates.include?(ship_2_two_coords) #the 2 item array
+    if board.valid_ship_coordinates.include?(ship_2_to_array)
+      return ship_2_to_array #the 3 item array
+    else
       return Instructions.ship_out_of_bounds
         # then gets
-    else board.valid_ship_coordinates.include?(ship_2_two_coords)
-      return ship_2_to_array #the 3 item array
     end
   end
 

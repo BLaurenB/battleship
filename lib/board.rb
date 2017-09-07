@@ -4,20 +4,13 @@ require "./lib/instructions.rb"
 class Board
 
   attr_reader :name, :title, :user_input,
-  :a1, :a2, :a3, :a4,
-  :b1, :b2, :b3, :b4,
-  :c1, :c2, :c3, :c4,
-  :d1, :d2, :d3, :d4,
-  :row_a, :row_b, :row_c, :row_d
+
+  attr_accessor :board_rows, :row_a, :row_b, :row_c, :row_d
 
   def initialize(name = "Eugene the Ugly Unicorn", board_title = "default")
     @name = name
     @title = board_title
-    # @user_input = ""
-    @a1, @a2, @a3, @a4 = " ", " ", " ", " "
-    @b1, @b2, @b3, @b4 = " ", " ", " ", " "
-    @c1, @c2, @c3, @c4 = " ", " ", " ", " "
-    @d1, @d2, @d3, @d4 = " ", " ", " ", " "
+
   end
 
   def valid_coordinates
@@ -25,7 +18,6 @@ class Board
   end
 
   def board_rows #tracks the hits and misses when they fire as well as the ship placement at beginning
-
     #get at the spaces: board_rows[*][coord] = " *"
     [
       {:row_a =>
@@ -43,7 +35,33 @@ class Board
     ]
   end
 
+  def print_board
+    @row_1 = board.valid_coordinates.map do |coord|
+      board_rows[0][:row_a][(coord[1].to_i - 1)][coord]
+      #but we need a player board and an ai board.
+    end
+    @row_2 = board.valid_coordinates.map do |coord|
+      board_rows[1][:row_b][0][coord]
+    end
+    @row_3 = board.valid_coordinates.map do |coord|
+      board_rows[2][:row_c][0][coord]
+    end
+    @row_4 = board.valid_coordinates.map do |coord|
+      board_rows[3][:row_d][0][coord]
+    end
+  end
 
+  def enemy_target_map #maybe interpolate the title since it's all 1 class?
+    # print_board
+    "#{@title}
+    ===========
+    . 1 2 3 4
+    A #{@row_1}
+    B #{@row_2}
+    C #{@row_3}
+    D #{@row_4}
+    ==========="
+  end
 
 
 
@@ -52,29 +70,3 @@ end
 
 
 #to print, use this
-def print_board
-  @row_1 = board.valid_coordinates.map do |coord|
-    board_rows[0][:row_a][0][coord] #but we need a player board and an ai board.
-  end
-  @row_2 = board.valid_coordinates.map do |coord|
-    board_rows[1][:row_b][0][coord]
-  end
-  @row_3 = board.valid_coordinates.map do |coord|
-    board_rows[2][:row_c][0][coord]
-  end
-  @row_4 = board.valid_coordinates.map do |coord|
-    board_rows[3][:row_d][0][coord]
-  end
-end
-
-def enemy_target_map #maybe interpolate the title since it's all 1 class?
-  print_board
-  "#{@title}
-  ===========
-  . 1 2 3 4
-  A #{@row_1}
-  B #{@row_2}
-  C #{@row_3}
-  D #{@row_4}
-  ==========="
-end

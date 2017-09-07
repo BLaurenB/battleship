@@ -3,13 +3,15 @@ require "./lib/board.rb"
 
 class Ship
 
-  attr_reader :user_input, :board
+  attr_reader :user_input, :board, :s1, :s2
 
   def initialize
     @user_input
     @potential_ship_1
     @potential_ship_2
     @board = Board.new
+    @s1 = s1
+    @s2 = s2
   end
 
   def valid_ship_coordinates
@@ -110,73 +112,78 @@ class Ship
 
 
   def ai_ship_1_choice
-    ai_ship_1_choice = valid_ship_coordinates.sample
-    until ai_ship_1_choice.length == 2
-      ai_ship_1_choice = valid_ship_coordinates.sample
+    two_coord_ships = []
+    two_coord_ships = valid_ship_coordinates.find_all do |coords|
+      coords.length == 2
     end
-    return ai_ship_1_choice
+    two_coord_ships.sample
   end
 
   def ai_ship_2_choice
-      # require "pry"; binding.pry
-    ai_ship_2_choice = valid_ship_coordinates.sample
-    until ai_ship_2_choice.length == 3
-      ai_ship_2_choice = valid_ship_coordinates.sample
+    three_coord_ships = []
+    three_coord_ships = valid_ship_coordinates.find_all do |coords|
+      coords.length == 3
     end
-    return ai_ship_2_choice
+    three_coord_ships.sample
   end
 
   def ai_ships_cannot_overlap
     ships = []
     ships.push(ai_ship_1_choice)
     ships.push(ai_ship_2_choice)
-    if ships.flatten != ships.flatten.uniq!
-      ai_ship_2_choice
+    while ships.flatten == ships.flatten.uniq
+      three_coord_ships = valid_ship_coordinates.find_all do |coords|
+        coords.length == 3
+      end
+      three_coord_ships = three_coord_ships.sample
+      ships = []
+      ships.push(ai_ship_1_choice)
+      ships.push(three_coord_ships)
     end
+     ai_ship_2_choice = three_coord_ships
+  end
+
+  def ai_ship_2_has_3_valid_coordinates
+    ai_ship_2_choice
+    ai_ships_cannot_overlap
+  end
+
+  def ai_ship_coordinate_validation
+    ai_ship_2_choice
+    ai_ship_2_has_3_valid_coordinates
   end
 
   def ai_place_ships_on_board
-    s1 = ai_ship_1_choice
-    s2 = ai_ship_2_choice
-    place_ships_on_board(s1, s2)
+    @s1 = ai_ship_1_choice
+    @s2 = ai_ship_2_has_3_valid_coordinates
+    place_ships_on_board
   end
 
   def player_place_ships_on_board
-    s1 = ship_1
-    s2 = ship_2
-    place_ships_on_board(s1, s2)
+    @s1 = ship_1
+    @s2 = ship_2
+    place_ships_on_board
   end
 
 
   def place_ships_on_board #does this belong on board class or UI class?
-    all_ships = (s1 << s2).flatten
-     all_ships.each do |coord|
-       if coord[0] == "A"
-        board.board_rows[0][:row_a][0][coord] = " *"
+require "pry";
+    all_ships  = []
+    all_ships  =  @s1 << @s2
+    all_ships = all_ships.flatten
+    all_ships.each do |coord|
+      # binding.pry;
+      if coord[0] == "A"
+        board.board_rows[0][:row_a][(coord[1].to_i - 1)][coord] = " *"
       elsif coord[0] == "B"
-        board.board_rows[1][:row_b][0][coord] = " *"
+        board.board_rows[1][:row_b][(coord[1].to_i - 1)][coord] = " *"
       elsif coord[0] == "C"
-        board.board_rows[2][:row_c][0][coord] = " *"
+        board.board_rows[2][:row_c][(coord[1].to_i - 1)][coord] = " *"
       else coord[0] == "D"
-        board.board_rows[3][:row_d][0][coord] = " *"
+        board.board_rows[3][:row_d][(coord[1].to_i - 1)][coord] = " *"
       end
     end
   end
-
-
-
-
-=begin
-things to try.
- - a .each that compares the element to the hash. if a hash match is found, perform a separate update/replacement of values
-
-
-
-
-
-=end
-
-
 
 
 
@@ -186,14 +193,6 @@ end
 
 
 =begin
-2 ships, 2x1 and 3x1
-
-
-create an array of valid locations or invalid
-be able to compare user input to valid ship locations. then store in a board call to the player's board.
-
-
-the player's ships should be *
 
 there need to be 2 versions of ships that print
 -- if it's the placed_ship_map, it will be *

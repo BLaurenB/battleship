@@ -1,6 +1,12 @@
-Things to ask Andrew and instructors:
---when should the timer start?
---is the boat with 3 spots supposed to get input of 3 coords, or just 2?
+things to pull out of ships
+ai ships?
+validation of player and ai ships?
+all 4 types (ai, player, 1, 2?)...make 4 copies of tests and ships, then delete parts that aren't needed from each?
+
+does ships need to be a class? are there things in ships that actually belong in Gmae_Phase class? something like a gaem-set-up class which is called from the wrapper? could Game set up be a parent so that different ships and classes can inherit?
+
+
+
 
 
 

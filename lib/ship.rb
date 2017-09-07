@@ -9,7 +9,7 @@ class Ship
     @user_input
     @potential_ship_1
     @potential_ship_2
-    @board = Board.new
+    @board = Board.new # this is problematic for creating 4 different boards. if I name them all differently, how to call and update them?
     @s1 = s1
     @s2 = s2
   end
@@ -66,7 +66,6 @@ class Ship
     end
 
   def ship_2_input_too_small_or_large
-
     if @potential_ship_2.length < 6
       Instructions.ship_2_input_too_small
     elsif @potential_ship_2.length > 6
@@ -131,7 +130,7 @@ class Ship
     ships = []
     ships.push(ai_ship_1_choice)
     ships.push(ai_ship_2_choice)
-    while ships.flatten == ships.flatten.uniq
+    while ships.flatten != ships.flatten.uniq
       three_coord_ships = valid_ship_coordinates.find_all do |coords|
         coords.length == 3
       end
@@ -150,7 +149,6 @@ class Ship
 
   def ai_ship_coordinate_validation
     ai_ship_2_choice
-    ai_ship_2_has_3_valid_coordinates
   end
 
   def ai_place_ships_on_board
@@ -166,24 +164,27 @@ class Ship
   end
 
 
-  def place_ships_on_board #does this belong on board class or UI class?
-require "pry";
+  def send_ships_to_board #does this belong on board class or UI class?
     all_ships  = []
-    all_ships  =  @s1 << @s2
+    all_ships  =  @s1.push(@s2)
     all_ships = all_ships.flatten
-    all_ships.each do |coord|
-      # binding.pry;
-      if coord[0] == "A"
-        board.board_rows[0][:row_a][(coord[1].to_i - 1)][coord] = " *"
-      elsif coord[0] == "B"
-        board.board_rows[1][:row_b][(coord[1].to_i - 1)][coord] = " *"
-      elsif coord[0] == "C"
-        board.board_rows[2][:row_c][(coord[1].to_i - 1)][coord] = " *"
-      else coord[0] == "D"
-        board.board_rows[3][:row_d][(coord[1].to_i - 1)][coord] = " *"
-      end
-      return board.board_rows
-    end
+    # all_ships.each do |coord|
+    #   # require "pry"; binding.pry;
+    #   if coord[0] == "A"
+    #     board.board_rows[0][:row_a][((coord[1]).to_i - 1)][coord] = " *"
+    #     return
+    #   elsif coord[0] == "B"
+    #     board.board_rows[1][:row_b][((coord[1]).to_i - 1)][coord] = " *"
+    #     return
+    #   elsif coord[0] == "C"
+    #     board.board_rows[2][:row_c][((coord[1]).to_i - 1)][coord] = " *"
+    #     return
+    #   else coord[0] == "D"
+    #     board.board_rows[3][:row_d][((coord[1]).to_i - 1)][coord] = " *"
+    #     return
+    #   end
+    #   board.print_board
+    # end
   end
 
 

@@ -3,8 +3,6 @@ require "minitest/autorun"
 require "minitest/pride"
 require "./lib/board.rb"
 require "./lib/ship.rb"
-require "./lib/user_communication.rb"
-require "./lib/shot_sequence.rb"
 require "./lib/instructions.rb"
 
 
@@ -62,7 +60,7 @@ class ShipTest < Minitest::Test
     D2 D3 D4
     or
     B3 C3 D3"
-    assert_equal output, input
+    assert_equal actual, expected
   end
 
   def test_it_can_determine_if_s2_input_too_large
@@ -171,11 +169,12 @@ class ShipTest < Minitest::Test
     board = Board.new
     ship.ai_ship_1_choice
     ship.ai_ship_2_choice
-
-    input =  ship.ai_place_ships_on_board
+    ship.ai_place_ships_on_board
     # require "pry"; binding.pry
-    output = board.board_rows
-    assert_equal output, input
+
+    assert ship.ai_place_ships_on_board.any? do |coord|
+      coord == " *"
+    end
   end
 
 

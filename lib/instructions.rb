@@ -16,6 +16,24 @@ module Instructions
     When a player has Hit all the opponents' ship coordinates, that player wins!"
   end
 
+  def self.ai_ship_set_up_complete
+    "I have laid out my ships on the grid.
+    You now need to lay out your two ships.
+    the first is two units long and the second is three units long. The grid has A1 at the top left and D4 at the bottom right:
+
+    Ship Board:
+    ===========
+    . 1 2 3 4
+    A #{@row_1}
+    B #{@row_2}
+    C #{@row_3}
+    D #{@row_4}
+    ===========
+
+    Enter the coordinates for the two-unit ship:"
+    
+  end
+
   def self.ship_out_of_bounds
     "You entered a coordinate that is outside the bounds of this board.\nEnter your coordinates again."
   end

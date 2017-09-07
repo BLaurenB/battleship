@@ -3,7 +3,7 @@ require "./lib/instructions.rb"
 
 class Board
 
-  attr_reader :name, :title, :user_input,
+  attr_reader :name, :title, :user_input
 
   attr_accessor :board_rows, :row_a, :row_b, :row_c, :row_d
 

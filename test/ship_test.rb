@@ -174,7 +174,7 @@ class ShipTest < Minitest::Test
 
     input =  ship.ai_place_ships_on_board
     # require "pry"; binding.pry
-    output = board.enemy_target_map
+    output = board.board_rows
     assert_equal output, input
   end
 

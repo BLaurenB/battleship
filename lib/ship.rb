@@ -182,6 +182,7 @@ require "pry";
       else coord[0] == "D"
         board.board_rows[3][:row_d][(coord[1].to_i - 1)][coord] = " *"
       end
+      return board.board_rows
     end
   end
 
